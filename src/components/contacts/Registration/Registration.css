@@ -1,0 +1,39 @@
+.datepicker {
+  border-radius: 4px;
+  height: 37px;
+  border: solid 1px rgb(206, 212, 218);
+  float: right;
+  position: relative;
+  left: 21%;
+  width: 110%;
+  color: rgb(108, 117, 125);
+}
+#datepickerlabel {
+  float: left;
+  position: relative;
+  top: 6px;
+}
+@media (max-width: 476px) {
+  .datepicker {
+    left: 7%;
+    width: 97%;
+  }
+}
+
+@media (max-width: 395px) {
+  #datepickerlabel {
+    margin-bottom: 15px;
+    transform: translate(50%, -50%);
+  }
+  .datepicker {
+    float: none;
+    transform: translate(-10%, -5%);
+    width: 74%;
+  }
+}
+@media (max-width: 320px) {
+  #datepickerlabel {
+    margin-bottom: 10px;
+    transform: translate(28%, -50%);
+  }
+}
