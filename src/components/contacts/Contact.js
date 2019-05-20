@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
+import { Link } from "react-router-dom";
 
 class Contact extends Component {
   state = {
@@ -21,7 +22,11 @@ class Contact extends Component {
           return (
             <div className="card card-body mb-3">
               <h4>
-                {contact.name} {/* setting the opposite value  */}
+                <b>
+                  {" "}
+                  {contact.name} {contact.surname}
+                </b>
+                {/* setting the opposite value  */}
                 <i
                   onClick={() =>
                     this.setState({
@@ -35,23 +40,39 @@ class Contact extends Component {
                   style={{ float: "right", color: "red" }}
                   onClick={this.onDeleteClick.bind(this, contact.id, dispatch)}
                 />
+                <Link to={`edituser/${contact.id}`}>
+                  <i
+                    className="fa fa-edit"
+                    style={{
+                      float: "right",
+                      color: "black",
+                      marginRight: "1rem",
+                      marginTop: "0.2rem"
+                    }}
+                  />
+                </Link>
               </h4>
 
               {showContactInfo ? (
                 <ul className="list-group">
                   <li className="list-group-item">
-                    პირადი ნომერი: {contact.number}
-                  </li>
-                  <li className="list-group-item">სქესი: {contact.gender}</li>
-                  <li className="list-group-item">
-                    დაბადების თარიღი : {contact.dob}
+                    პირადი ნომერი: <b> {contact.userid}</b>
                   </li>
                   <li className="list-group-item">
-                    დაბადების ადგილი : {contact.birthlocation}
+                    სქესი: <b> {contact.gender}</b>
                   </li>
                   <li className="list-group-item">
-                    მისამართი: {contact.location.city} ,{" "}
-                    {contact.location.street}
+                    დაბადების თარიღი : <b>{contact.dob}</b>
+                  </li>
+                  <li className="list-group-item">
+                    დაბადების ადგილი : <b> {contact.birthlocation}</b>
+                  </li>
+                  <li className="list-group-item">
+                    მისამართი:{" "}
+                    <b>
+                      {" "}
+                      {contact.city} , {contact.street}
+                    </b>
                   </li>
                 </ul>
               ) : null}
@@ -63,6 +84,7 @@ class Contact extends Component {
   }
 }
 Contact.propTypes = {
-  contact: PropTypes.object.isRequired
+  contact: PropTypes.object.isRequired,
+  error: PropTypes.string
 };
 export default Contact;

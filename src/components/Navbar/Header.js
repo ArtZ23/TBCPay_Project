@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 const Header = props => {
   return (
     <div className="main">
@@ -20,10 +21,10 @@ const Header = props => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 <i id="home" className="fa fa-home" />
                 Home
-              </a>
+              </Link>
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
@@ -42,13 +43,13 @@ const Header = props => {
           </form>
           <ul className="navbar-nav nav-flex-icons">
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-toggle="dropdown">
+              <Link className="nav-link dropdown-toggle" data-toggle="dropdown">
                 <i className="fa fa-user" id="user" />
-              </a>
+              </Link>
               <div className="dropdown-menu dropdown-menu-right dropdown-default">
-                <a className="dropdown-item" href="/register">
+                <Link className="dropdown-item" to="/adduser">
                   Sign In
-                </a>
+                </Link>
               </div>
             </li>
           </ul>
