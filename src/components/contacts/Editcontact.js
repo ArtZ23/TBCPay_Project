@@ -29,8 +29,9 @@ class Editcontact extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   async componentDidMount() {
+    // get user ID
     const { id } = this.props.match.params;
-    const res = await axios.get(`http://localhost:3000/edituser/${id}`);
+    const res = await axios.get(`http://localhost:3001/contacts/${id}`);
 
     const contact = res.data;
 
@@ -38,6 +39,7 @@ class Editcontact extends Component {
       name: contact.name,
       surname: contact.surname,
       userid: contact.userid,
+      gender: contact.gender,
       dob: contact.dob,
       birthlocation: contact.birthlocation,
       city: contact.city,
@@ -45,7 +47,7 @@ class Editcontact extends Component {
     });
   }
 
-  onSubmit = (dispatch, e) => {
+  onSubmit = async (dispatch, e) => {
     e.preventDefault();
 
     const {
@@ -56,8 +58,7 @@ class Editcontact extends Component {
       dob,
       birthlocation,
       city,
-      street,
-      errors
+      street
     } = this.state;
     //User Validation
     if (name.length === 0) {
@@ -94,6 +95,24 @@ class Editcontact extends Component {
       this.setState({ errors: { street: "Street is Required" } });
       return;
     }
+    const updContact = {
+      name,
+      surname,
+      userid,
+      gender,
+      dob,
+      birthlocation,
+      city,
+      street
+    };
+
+    const { id } = this.props.match.params;
+    // making an update request
+    const res = await axios.put(
+      `http://localhost:3001/contacts/${id}`,
+      updContact
+    );
+    dispatch({ type: "UPDATE_CONTACT", payload: res.data });
 
     // Clear state
     this.setState({
@@ -126,13 +145,13 @@ class Editcontact extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
-          const { nameError } = this.state;
+
           return (
             <div className="container mt-5 container mt-5 text-center d-flex justify-content-center">
               <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label htmlfor="name">სახელი</label>
+                    <label htmlFor="name">სახელი</label>
                     <input
                       id="name"
                       name="name"
@@ -148,7 +167,7 @@ class Editcontact extends Component {
                     <div className="invalid-feedback"> Enter Name</div>
                   </div>
                   <div className="form-group col-md-6">
-                    <label htmlfor="surname">გვარი</label>
+                    <label htmlFor="surname">გვარი</label>
                     <input
                       type="text"
                       name="surname"
@@ -165,7 +184,7 @@ class Editcontact extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlfor="gender">სქესი</label>
+                  <label htmlFor="gender">სქესი</label>
                   <select
                     id="gender"
                     name="gender"
@@ -176,14 +195,14 @@ class Editcontact extends Component {
                     onChange={this.onChange}
                     error={errors}
                   >
-                    <option selected>სქესი...</option>
+                    <option>სქესი...</option>
                     <option>მამრობითი</option>
                     <option>მდედრობითი</option>
                   </select>
                   <div className="invalid-feedback"> Enter Surname</div>
                 </div>
                 <div className="form-group">
-                  <label htmlfor="userid">პირადი ნომერი</label>
+                  <label htmlFor="userid">პირადი ნომერი</label>
                   <input
                     type="number"
                     pattern="[0-9]*"
@@ -199,7 +218,7 @@ class Editcontact extends Component {
                   />
                   <div className="invalid-feedback"> Enter Surname</div>
                   <br />
-                  <label id="datepickerlabel" htmlfor="datepicker">
+                  <label id="datepickerlabel" htmlFor="datepicker">
                     დაბადების თარიღი{" "}
                   </label>
                   <DatePicker
@@ -216,7 +235,7 @@ class Editcontact extends Component {
                   <div className="invalid-feedback"> Enter date of Birth</div>
                 </div>
                 <div className="form-group">
-                  <label htmlfor="birthlocation">დაბადების ადგილი</label>
+                  <label htmlFor="birthlocation">დაბადების ადგილი</label>
                   <select
                     name="birthlocation"
                     id="birthlocation"
@@ -227,7 +246,7 @@ class Editcontact extends Component {
                     onChange={this.onChange}
                     error={errors}
                   >
-                    <option selected>დაბადების ადგილი...</option>
+                    <option>დაბადების ადგილი...</option>
                     <option>USA</option>
                     <option>UK</option>
                   </select>
@@ -235,7 +254,7 @@ class Editcontact extends Component {
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label htmlfor="city">ქალაქი</label>
+                    <label htmlFor="city">ქალაქი</label>
                     <input
                       name="city"
                       type="text"
@@ -250,7 +269,7 @@ class Editcontact extends Component {
                     <div className="invalid-feedback"> Enter City</div>
                   </div>
                   <div className="form-group col-md-6">
-                    <label htmlfor="street">ქუჩა</label>
+                    <label htmlFor="street">ქუჩა</label>
                     <input
                       name="street"
                       type="text"

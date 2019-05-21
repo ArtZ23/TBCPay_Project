@@ -11,7 +11,10 @@ class Contacts extends Component {
           return (
             <React.Fragment>
               <h1 className="display-6 mb-3">
-                <span className="text-danger">მომხმარებელთა</span> სია
+                <span className="display-6" style={{ color: "rgb(0,173,238)" }}>
+                  მომხმარებელთა
+                </span>{" "}
+                სია
               </h1>
               {contacts.map(contact => (
                 <Contact key={contact.id} contact={contact} />

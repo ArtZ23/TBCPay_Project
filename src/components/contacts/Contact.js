@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Contact extends Component {
   state = {
     showContactInfo: false
   };
-  onDeleteClick = (id, dispatch) => {
+
+  onDeleteClick = async (id, dispatch) => {
+    await axios.delete(`http://localhost:3001/contacts/${id}`);
     dispatch({ type: "DELETE_CONTACT", payload: id });
   };
 

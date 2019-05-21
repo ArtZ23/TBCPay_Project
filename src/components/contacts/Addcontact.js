@@ -5,6 +5,7 @@ import classnames from "classnames";
 import "./Addcontact.css";
 import uuid from "uuid";
 import "react-datepicker/dist/react-datepicker.css";
+import Axios from "axios";
 
 class Addcontact extends Component {
   state = {
@@ -39,8 +40,7 @@ class Addcontact extends Component {
       dob,
       birthlocation,
       city,
-      street,
-      errors
+      street
     } = this.state;
     //User Validation
     if (name.length === 0) {
@@ -88,7 +88,11 @@ class Addcontact extends Component {
       city,
       street
     };
-    dispatch({ type: "ADD_CONTACT", payload: newContact });
+
+    Axios.post("http://localhost:3001/contacts", newContact).then(res =>
+      dispatch({ type: "ADD_CONTACT", payload: newContact })
+    );
+
     // Clear state
     this.setState({
       name: "",
@@ -120,13 +124,13 @@ class Addcontact extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
-          const { nameError } = this.state;
+
           return (
             <div className="container mt-5 container mt-5 text-center d-flex justify-content-center">
               <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label htmlfor="name">სახელი</label>
+                    <label htmlFor="name">სახელი</label>
                     <input
                       id="name"
                       name="name"
@@ -142,7 +146,7 @@ class Addcontact extends Component {
                     <div className="invalid-feedback"> Enter Name</div>
                   </div>
                   <div className="form-group col-md-6">
-                    <label htmlfor="surname">გვარი</label>
+                    <label htmlFor="surname">გვარი</label>
                     <input
                       type="text"
                       name="surname"
@@ -159,7 +163,7 @@ class Addcontact extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label htmlfor="gender">სქესი</label>
+                  <label htmlFor="gender">სქესი</label>
                   <select
                     id="gender"
                     name="gender"
@@ -170,14 +174,14 @@ class Addcontact extends Component {
                     onChange={this.onChange}
                     error={errors}
                   >
-                    <option selected>სქესი...</option>
+                    <option>სქესი...</option>
                     <option>მამრობითი</option>
                     <option>მდედრობითი</option>
                   </select>
                   <div className="invalid-feedback"> Enter Surname</div>
                 </div>
                 <div className="form-group">
-                  <label htmlfor="userid">პირადი ნომერი</label>
+                  <label htmlFor="userid">პირადი ნომერი</label>
                   <input
                     type="number"
                     pattern="[0-9]*"
@@ -193,7 +197,7 @@ class Addcontact extends Component {
                   />
                   <div className="invalid-feedback"> Enter Surname</div>
                   <br />
-                  <label id="datepickerlabel" htmlfor="datepicker">
+                  <label id="datepickerlabel" htmlFor="datepicker">
                     დაბადების თარიღი{" "}
                   </label>
                   <DatePicker
@@ -210,7 +214,7 @@ class Addcontact extends Component {
                   <div className="invalid-feedback"> Enter date of Birth</div>
                 </div>
                 <div className="form-group">
-                  <label htmlfor="birthlocation">დაბადების ადგილი</label>
+                  <label htmlFor="birthlocation">დაბადების ადგილი</label>
                   <select
                     name="birthlocation"
                     id="birthlocation"
@@ -221,7 +225,7 @@ class Addcontact extends Component {
                     onChange={this.onChange}
                     error={errors}
                   >
-                    <option selected>დაბადების ადგილი...</option>
+                    <option>დაბადების ადგილი...</option>
                     <option>USA</option>
                     <option>UK</option>
                   </select>
@@ -229,7 +233,7 @@ class Addcontact extends Component {
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <label htmlfor="city">ქალაქი</label>
+                    <label htmlFor="city">ქალაქი</label>
                     <input
                       name="city"
                       type="text"
@@ -244,7 +248,7 @@ class Addcontact extends Component {
                     <div className="invalid-feedback"> Enter City</div>
                   </div>
                   <div className="form-group col-md-6">
-                    <label htmlfor="street">ქუჩა</label>
+                    <label htmlFor="street">ქუჩა</label>
                     <input
                       name="street"
                       type="text"

@@ -35,20 +35,28 @@ const Header = props => {
               aria-label="Search"
             />
             <button
-              className="btn  btn-outline-success my-2 my-sm-0"
+              className="btn  btn-outline-primary my-2 my-sm-0"
               type="submit"
+              style={{
+                borderColor: "rgb(0,173,238)",
+                color: "rgb(0,173,238)"
+              }}
             >
               Search
             </button>
           </form>
           <ul className="navbar-nav nav-flex-icons">
             <li className="nav-item dropdown">
-              <Link className="nav-link dropdown-toggle" data-toggle="dropdown">
+              <Link
+                to=""
+                className="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+              >
                 <i className="fa fa-user" id="user" />
               </Link>
               <div className="dropdown-menu dropdown-menu-right dropdown-default">
                 <Link className="dropdown-item" to="/adduser">
-                  Sign In
+                  Add user
                 </Link>
               </div>
             </li>

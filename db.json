@@ -1,0 +1,44 @@
+{
+  "contacts": [
+    {
+      "id": "02630025-f47f-4348-8cdc-da95b3ec3191",
+      "name": "nick",
+      "surname": "smith",
+      "userid": "12345678910",
+      "gender": "მამრობითი",
+      "birthlocation": "USA",
+      "city": "aa",
+      "street": "ddd"
+    },
+    {
+      "name": "Nicolasds",
+      "surname": "Tomson",
+      "userid": "12345678910",
+      "gender": "მდედრობითი",
+      "birthlocation": "UK",
+      "city": "lodnon222",
+      "street": "School street 1425",
+      "id": "a53fef92-92cd-4251-9779-55e52e94c97a"
+    },
+    {
+      "id": "3339cde5-e5f9-440c-9592-2b873e9d9c04",
+      "name": "Maria",
+      "surname": "Traversy",
+      "userid": "12345678910",
+      "gender": "მდედრობითი",
+      "birthlocation": "USA",
+      "city": "NEw York",
+      "street": "School street 14"
+    },
+    {
+      "name": "John",
+      "surname": "Zinger",
+      "userid": "12345678910",
+      "gender": "მამრობითი",
+      "birthlocation": "USA",
+      "city": "NEw York",
+      "street": " Small Avenue #1",
+      "id": "85578e9e-a426-423d-a7d4-0adb0959b9db"
+    }
+  ]
+}
