@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import { Consumer } from "../../context";
-import classnames from "classnames";
+
 import "./Addcontact.css";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
@@ -16,34 +16,41 @@ class Editcontact extends Component {
     birthlocation: "",
     city: "",
     street: "",
-    errors: {}
+    
   };
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date()
+      name: "",
+      surname: "",
+      userid: "",
+      gender: "",
+      birthlocation: "",
+      city: "",
+      street: "",
+      dob: new Date()
     };
     this.onChange = this.onChange.bind(this);
   }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
+  handleChange = date => this.setState({ dob: date });
+
   async componentDidMount() {
     // get user ID
     const { id } = this.props.match.params;
     const res = await axios.get(`http://localhost:3001/contacts/${id}`);
 
-    const contact = res.data;
-
     this.setState({
-      name: contact.name,
-      surname: contact.surname,
-      userid: contact.userid,
-      gender: contact.gender,
-      dob: contact.dob,
-      birthlocation: contact.birthlocation,
-      city: contact.city,
-      street: contact.street
+      name: res.data.name,
+      surname: res.data.surname,
+      userid: res.data.userid,
+      gender: res.data.gender,
+      // dob: res.data.dob,
+      birthlocation: res.data.birthlocation,
+      city: res.data.city,
+      street: res.data.street
     });
   }
 
@@ -60,41 +67,6 @@ class Editcontact extends Component {
       city,
       street
     } = this.state;
-    //User Validation
-    if (name.length === 0) {
-      this.setState({ errors: { name: "Name is Required" } });
-      return;
-    }
-
-    if (surname.length === 0) {
-      this.setState({ errors: { surname: "Surname is Required" } });
-      return;
-    }
-    if (userid.length === 0 || userid.length !== 11) {
-      this.setState({ errors: { userid: "Userid is Required" } });
-      return;
-    }
-    if (gender.length === "") {
-      this.setState({ errors: { gender: "Gender is Required" } });
-      return;
-    }
-    // Must be Modified !!
-    // if (dob.length === "") {
-    //   this.setState({ errors: { dob: "DateOFBirth is Required" } });
-    //   return;
-    // }
-    if (birthlocation.length === "") {
-      this.setState({ errors: { birthlocation: "Birthlocation is Required" } });
-      return;
-    }
-    if (city.length === "") {
-      this.setState({ errors: { city: "City is Required" } });
-      return;
-    }
-    if (street.length === "") {
-      this.setState({ errors: { street: "Street is Required" } });
-      return;
-    }
     const updContact = {
       name,
       surname,
@@ -139,13 +111,12 @@ class Editcontact extends Component {
       birthlocation,
       city,
       street,
-      errors
+      
     } = this.state;
     return (
       <Consumer>
         {value => {
           const { dispatch } = value;
-
           return (
             <div className="container mt-5 container mt-5 text-center d-flex justify-content-center">
               <form onSubmit={this.onSubmit.bind(this, dispatch)}>
@@ -156,136 +127,116 @@ class Editcontact extends Component {
                       id="name"
                       name="name"
                       type="text"
-                      className={classnames("form-control ", {
-                        "is-invalid": errors
-                      })}
+                      className="form-control "
                       placeholder="სახელი"
                       value={name}
                       onChange={this.onChange}
-                      error={errors}
+                      required
                     />
-                    <div className="invalid-feedback"> Enter Name</div>
                   </div>
                   <div className="form-group col-md-6">
                     <label htmlFor="surname">გვარი</label>
                     <input
                       type="text"
                       name="surname"
-                      className={classnames("form-control ", {
-                        "is-invalid": errors
-                      })}
+                      className="form-control "
                       id="surname"
                       placeholder="გვარი"
                       value={surname}
                       onChange={this.onChange}
-                      error={errors}
+                      required
                     />
-                    <div className="invalid-feedback"> Enter Surname</div>
                   </div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="gender">სქესი</label>
                   <select
+                    required
                     id="gender"
                     name="gender"
-                    className={classnames("form-control ", {
-                      "is-invalid": errors
-                    })}
+                    className="form-control "
                     value={gender}
                     onChange={this.onChange}
-                    error={errors}
                   >
                     <option>სქესი...</option>
                     <option>მამრობითი</option>
                     <option>მდედრობითი</option>
                   </select>
-                  <div className="invalid-feedback"> Enter Surname</div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="userid">პირადი ნომერი</label>
                   <input
+                    required
                     type="number"
                     pattern="[0-9]*"
                     name="userid"
-                    className={classnames("form-control ", {
-                      "is-invalid": errors
-                    })}
+                    className="form-control "
                     id="userid"
                     placeholder="პირადი ნომერი"
                     value={userid}
                     onChange={this.onChange}
-                    error={errors}
                   />
-                  <div className="invalid-feedback"> Enter Surname</div>
                   <br />
-                  <label id="datepickerlabel" htmlFor="datepicker">
+                  <label id="datepickerlabel" htmlFor="dob">
                     დაბადების თარიღი{" "}
                   </label>
                   <DatePicker
+                    required
                     name="dob"
                     id="dob"
-                    className={classnames("datepicker ", {
-                      "is-invalid": errors
-                    })}
-                    selected={dob}
-                    onChange={this.onChange}
-                    value={this.state.dob}
-                    error={errors}
+                    maxDate={this.state.dob}
+                    className="datepicker "
+                    selected={this.state.dob}
+                    onChange={this.handleChange}
+                    dateFormat="dd/MM/yyyy"
+                    value={dob}
                   />
-                  <div className="invalid-feedback"> Enter date of Birth</div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="birthlocation">დაბადების ადგილი</label>
                   <select
+                    required
                     name="birthlocation"
                     id="birthlocation"
-                    className={classnames("form-control ", {
-                      "is-invalid": errors
-                    })}
+                    className="form-control "
                     value={birthlocation}
                     onChange={this.onChange}
-                    error={errors}
                   >
                     <option>დაბადების ადგილი...</option>
                     <option>USA</option>
                     <option>UK</option>
                   </select>
-                  <div className="invalid-feedback"> Enter Birth Location</div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label htmlFor="city">ქალაქი</label>
                     <input
+                      required
                       name="city"
                       type="text"
-                      className={classnames("form-control ", {
-                        "is-invalid": errors
-                      })}
+                      className="form-control "
+                      placeholder="ქალაქი"
                       id="city"
                       value={city}
                       onChange={this.onChange}
-                      error={errors}
                     />
-                    <div className="invalid-feedback"> Enter City</div>
                   </div>
                   <div className="form-group col-md-6">
                     <label htmlFor="street">ქუჩა</label>
                     <input
+                      required
                       name="street"
                       type="text"
-                      className={classnames("form-control ", {
-                        "is-invalid": errors
-                      })}
+                      placeholder="ქუჩა"
+                      className="form-control "
                       id="street"
                       value={street}
                       onChange={this.onChange}
-                      error={errors}
                     />
-                    <div className="invalid-feedback"> Enter Street</div>
                   </div>
                 </div>
                 <button type="submit" className="btn btn-primary">
-                  Update
+                  რეგისტრაცია
                 </button>
               </form>
             </div>

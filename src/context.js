@@ -41,6 +41,9 @@ export class Provider extends Component {
     const res = await axios.get("http://localhost:3001/contacts");
 
     this.setState({ contacts: res.data });
+    //getting all users ID
+    // const usersId = res.data.map(user => `${user.userid}`);
+    // console.log(usersId);
   }
   render() {
     return (
