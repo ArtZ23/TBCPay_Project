@@ -1,26 +1,15 @@
 {
   "contacts": [
     {
-      "name": "გიორგი",
-      "surname": "იაშვილი",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "1999-05-22T19:00:00.000Z",
-      "birthlocation": "USA",
-      "city": "NEw York",
-      "street": "School street 14",
-      "id": "21505a11-de92-47b0-88b3-3bf263ac4405"
-    },
-    {
-      "id": "fdcf00e6-7772-4e76-a765-bc305ae63ece",
       "name": "მარიამ",
       "surname": "გაგუა",
       "userid": "12345678910",
       "gender": "მდედრობითი",
-      "dob": "2002-05-22T19:00:00.000Z",
+      "dob": "2019-05-21T09:23:29.000Z",
       "birthlocation": "USA",
       "city": "NEw York",
-      "street": "School street 14"
+      "street": "School street 14",
+      "id": "fdcf00e6-7772-4e76-a765-bc305ae63ece"
     },
     {
       "id": "35b71c23-4a8c-4274-885f-780161177a96",
@@ -45,15 +34,26 @@
       "street": "School street 14"
     },
     {
-      "name": "Hayfa ",
-      "surname": "Decker",
-      "userid": "515326",
+      "id": "19f4ecaf-c40c-4805-b015-7000426d7fa1",
+      "name": "პაატა",
+      "surname": "სააკაძე",
+      "userid": "12345678910",
       "gender": "მამრობითი",
-      "dob": "2011-04-27T20:00:00.000Z",
-      "birthlocation": "UK",
-      "city": "Sed doloribus asperi",
-      "street": "Quis enim fuga Corp",
-      "id": "4bab8fa7-9e6c-48a0-b243-14b730dcdc12"
+      "dob": "2019-05-24T18:38:53.674Z",
+      "birthlocation": "USA",
+      "city": "NEw York",
+      "street": "School street 14"
+    },
+    {
+      "id": "57f3ed8c-e4ef-4a51-b1ea-0fbb1fa489ca",
+      "name": "დავით",
+      "surname": "გიორგაძე",
+      "userid": "12345678910",
+      "gender": "მამრობითი",
+      "dob": "2019-05-24T19:20:26.151Z",
+      "birthlocation": "USA",
+      "city": "NEw York",
+      "street": "School street 1425"
     }
   ]
 }

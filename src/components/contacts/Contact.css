@@ -1,0 +1,9 @@
+@media (max-width: 420px) {
+  b {
+    font-size: 1rem;
+  }
+  .fa-edit,
+  .fa-times {
+    font-size: 1.5rem;
+  }
+}

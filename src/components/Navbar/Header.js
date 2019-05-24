@@ -32,9 +32,7 @@ class Header extends Component {
             <form className="form-inline my-2 my-lg-0">
               <input
                 className="form-control mr-sm-2"
-                type="text"
-                placeholder="Search"
-                aria-label="Search"
+                placeholder="Search for..."
               />
               <button
                 className="btn  btn-outline-primary my-2 my-sm-0"

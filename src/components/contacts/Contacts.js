@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Contact from "./Contact";
 import { Consumer } from "../../context";
 
+import axios from "axios";
+
 class Contacts extends Component {
   render() {
     return (
@@ -10,7 +12,7 @@ class Contacts extends Component {
           const { contacts } = value;
           return (
             <React.Fragment>
-              <h1 className="display-6 mb-3">
+              <h1 className="display-6 mb-3" style={{ fontSize: "1.5rem" }}>
                 <span className="display-6" style={{ color: "rgb(0,173,238)" }}>
                   მომხმარებელთა
                 </span>{" "}

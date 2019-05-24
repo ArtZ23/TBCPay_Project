@@ -15,8 +15,7 @@ class Editcontact extends Component {
     dob: "",
     birthlocation: "",
     city: "",
-    street: "",
-    
+    street: ""
   };
   constructor(props) {
     super(props);
@@ -110,8 +109,7 @@ class Editcontact extends Component {
       dob,
       birthlocation,
       city,
-      street,
-      
+      street
     } = this.state;
     return (
       <Consumer>
@@ -236,7 +234,7 @@ class Editcontact extends Component {
                   </div>
                 </div>
                 <button type="submit" className="btn btn-primary">
-                  რეგისტრაცია
+                  განახლება
                 </button>
               </form>
             </div>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Consumer } from "../../context";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./Contact.css";
 
 class Contact extends Component {
   state = {
@@ -65,7 +66,17 @@ class Contact extends Component {
                     სქესი: <b> {contact.gender}</b>
                   </li>
                   <li className="list-group-item">
-                    დაბადების თარიღი : <b>{contact.dob}</b>
+                    დაბადების თარიღი :{" "}
+                    <b
+                      style={{
+                        whiteSpace: "nowrap",
+                        maxWidth: "8.4%",
+                        overflow: "hidden",
+                        display: "-webkit-box"
+                      }}
+                    >
+                      {contact.dob}
+                    </b>
                   </li>
                   <li className="list-group-item">
                     დაბადების ადგილი : <b> {contact.birthlocation}</b>
