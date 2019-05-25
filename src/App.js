@@ -5,7 +5,7 @@ import Header from "./components/Navbar/Header";
 import NotFound from "./components/Notfound";
 import Addcontact from "./components/contacts/Addcontact";
 import Editcontact from "./components/contacts/Editcontact";
-
+import Test from "./components/Test";
 import { Provider } from "./context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -22,6 +22,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Contacts} />
               <Route exact path="/adduser" component={Addcontact} />
+              <Route exact path="/test" component={Test} />
 
               <Route exact path="/edituser/:id" component={Editcontact} />
               <Route component={NotFound} />

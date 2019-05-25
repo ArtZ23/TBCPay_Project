@@ -17,28 +17,9 @@ class Addcontact extends Component {
     city: "",
     street: ""
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      surname: "",
-      userid: "",
-      gender: "",
-      birthlocation: "",
-      city: "",
-      street: "",
-      dob: new Date()
-    };
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
-
-  handleChange = date => this.setState({ dob: date });
 
   onSubmit = (dispatch, e) => {
     e.preventDefault();
-
     const {
       name,
       surname,
@@ -75,12 +56,30 @@ class Addcontact extends Component {
       dob: "",
       birthlocation: "",
       city: "",
-      street: "",
-      errors: {}
+      street: ""
     });
+
     //redirectign to the Home page
     this.props.history.push("/");
   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      surname: "",
+      userid: "",
+      gender: "",
+      birthlocation: "",
+      city: "",
+      street: "",
+      dob: new Date()
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  handleChange = date => this.setState({ dob: date });
   render() {
     const {
       name,
@@ -103,14 +102,14 @@ class Addcontact extends Component {
                   <div className="form-group col-md-6">
                     <label htmlFor="name">სახელი</label>
                     <input
+                      required
                       id="name"
                       name="name"
                       type="text"
-                      className="form-control "
+                      className="form-control"
                       placeholder="სახელი"
                       value={name}
                       onChange={this.onChange}
-                      required
                     />
                   </div>
                   <div className="form-group col-md-6">
@@ -184,6 +183,10 @@ class Addcontact extends Component {
                     <option>დაბადების ადგილი...</option>
                     <option>USA</option>
                     <option>UK</option>
+                    <option>GEORGIA</option>
+                    <option>SPAIN</option>
+                    <option>ITALY</option>
+                    <option>CANADA</option>
                   </select>
                 </div>
                 <div className="form-row">
@@ -214,7 +217,21 @@ class Addcontact extends Component {
                     />
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button
+                  disabled={
+                    name.length > 0 &&
+                    surname.length > 0 &&
+                    userid.length === 11 &&
+                    gender.length > 0 &&
+                    birthlocation.length > 0 &&
+                    city.length > 0 &&
+                    street.length > 0
+                      ? 0
+                      : 1
+                  }
+                  type="submit"
+                  className="btn btn-primary"
+                >
                   რეგისტრაცია
                 </button>
               </form>

@@ -203,6 +203,10 @@ class Editcontact extends Component {
                     <option>დაბადების ადგილი...</option>
                     <option>USA</option>
                     <option>UK</option>
+                    <option>GEORGIA</option>
+                    <option>SPAIN</option>
+                    <option>ITALY</option>
+                    <option>CANADA</option>
                   </select>
                 </div>
                 <div className="form-row">
