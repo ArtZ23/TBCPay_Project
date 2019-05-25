@@ -29,22 +29,7 @@ class Header extends Component {
                 </Link>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input
-                className="form-control mr-sm-2"
-                placeholder="Search for..."
-              />
-              <button
-                className="btn  btn-outline-primary my-2 my-sm-0"
-                type="submit"
-                style={{
-                  borderColor: "rgb(0,173,238)",
-                  color: "rgb(0,173,238)"
-                }}
-              >
-                Search
-              </button>
-            </form>
+
             <ul className="navbar-nav nav-flex-icons">
               <li className="nav-item dropdown">
                 <Link
@@ -57,6 +42,9 @@ class Header extends Component {
                 <div className="dropdown-menu dropdown-menu-right dropdown-default">
                   <Link className="dropdown-item" to="/adduser">
                     Add user
+                  </Link>
+                  <Link className="dropdown-item" to="/search">
+                    Seacrh user
                   </Link>
                 </div>
               </li>

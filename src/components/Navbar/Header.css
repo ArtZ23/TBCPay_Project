@@ -179,4 +179,7 @@ nav.bg-dark {
   .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
     top: -7px;
   }
+  .dropdown {
+    margin-left: -8rem;
+  }
 }

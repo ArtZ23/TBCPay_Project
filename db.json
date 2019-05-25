@@ -1,114 +1,26 @@
 {
   "contacts": [
     {
+      "id": "a8fcc5ff-d869-4cfc-90b4-dfb15d296095",
       "name": "მარიამ",
-      "surname": "გაგუა",
-      "userid": "12345678910",
-      "gender": "მდედრობითი",
-      "dob": "2019-05-25T10:48:03.288Z",
+      "surname": "გიორგაძე",
+      "userid": "01254879512",
+      "gender": "მამრობითი",
+      "dob": "2002-05-24T19:00:00.000Z",
       "birthlocation": "GEORGIA",
       "city": "NEw York",
-      "street": "School street 14",
-      "id": "fdcf00e6-7772-4e76-a765-bc305ae63ece"
-    },
-    {
-      "id": "35b71c23-4a8c-4274-885f-780161177a96",
-      "name": "გიორგი",
-      "surname": "კაპანაძე",
-      "userid": "1230445678911",
-      "gender": "მამრობითი",
-      "dob": "2019-05-23T11:40:25.172Z",
-      "birthlocation": "UK",
-      "city": "lodnon",
       "street": "School street 14"
     },
     {
-      "id": "f827582f-1cff-4cab-957d-5fc85b3975b0",
-      "name": "მაია",
-      "surname": "გოგია",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "1987-04-24T19:00:00.000Z",
-      "birthlocation": "USA",
-      "city": "NEw York",
-      "street": "School street 14"
-    },
-    {
-      "id": "19f4ecaf-c40c-4805-b015-7000426d7fa1",
-      "name": "პაატა",
-      "surname": "სააკაძე",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "2019-05-24T18:38:53.674Z",
-      "birthlocation": "USA",
-      "city": "NEw York",
-      "street": "School street 14"
-    },
-    {
-      "id": "57f3ed8c-e4ef-4a51-b1ea-0fbb1fa489ca",
-      "name": "დავით",
-      "surname": "გიორგაძე",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "2019-05-24T19:20:26.151Z",
-      "birthlocation": "USA",
-      "city": "NEw York",
-      "street": "School street 1425"
-    },
-    {
-      "id": "4a0e6292-9cae-4c58-8ec5-a55d5ae85578",
+      "id": "dea3bdd1-714e-440b-9026-7eba9db4e154",
       "name": "ნიკა",
       "surname": "მახათაძე",
       "userid": "12345678910",
       "gender": "მამრობითი",
-      "dob": "2019-05-25T10:50:04.902Z",
+      "dob": "2019-05-25T19:02:41.033Z",
       "birthlocation": "USA",
       "city": "NEw York",
       "street": "School street 14"
-    },
-    {
-      "name": "ლუკა",
-      "surname": "მახათაძე",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "2019-05-25T10:52:49.431Z",
-      "birthlocation": "USA",
-      "city": "NEw York",
-      "street": "School street 14",
-      "id": "4a0e6292-9cae-4c58-8ec5-a55d5aefc148"
-    },
-    {
-      "name": "ნიკა",
-      "surname": "გიორგაძე",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "2019-05-25T11:33:46.485Z",
-      "birthlocation": "GEORGIA",
-      "city": "Tbilisi",
-      "street": "School street 14",
-      "id": "4a0e6292-9cae-4c58-8ec5-a55d5aefc128"
-    },
-    {
-      "id": "4a0e6292-9cae-4c58-8ec5-a55d5aefc38",
-      "name": "ლუკა",
-      "surname": "პეტრიაშვილი",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "2019-05-25T10:50:04.902Z",
-      "birthlocation": "USA",
-      "city": "NEw York",
-      "street": "School street 14"
-    },
-    {
-      "name": "გიორგი",
-      "surname": "ჯამბურია",
-      "userid": "12345678910",
-      "gender": "მამრობითი",
-      "dob": "2019-05-25T10:53:22.894Z",
-      "birthlocation": "SPAIN",
-      "city": "Madrid",
-      "street": "School street 14",
-      "id": "4a0e6292-9cae-4c58-8ec5-a55d5aefca80"
     }
   ]
 }

@@ -100,7 +100,7 @@ class Editcontact extends Component {
     //redirectign to the Home page
     this.props.history.push("/");
   };
-  render() {
+  render(e) {
     const {
       name,
       surname,
