@@ -59,7 +59,7 @@ class Searchcontact extends Component {
           <tbody>
             {this.state.filteredData.map(l => {
               return (
-                <tr>
+                <tr key={l.id}>
                   <td>{l.name}</td>
                   <td>{l.surname}</td>
                   <td>{l.userid}</td>

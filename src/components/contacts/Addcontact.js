@@ -5,7 +5,6 @@ import "./Addcontact.css";
 import uuid from "uuid";
 import "react-datepicker/dist/react-datepicker.css";
 import Axios from "axios";
-import Popup from "reactjs-popup";
 
 class Addcontact extends Component {
   onSubmit = (dispatch, e) => {
