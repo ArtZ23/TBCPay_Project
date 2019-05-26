@@ -13,6 +13,11 @@
   position: relative;
   top: 6px;
 }
+
+.card-header {
+  color: white;
+  background-color: rgb(38, 71, 94) !important;
+}
 @media (max-width: 476px) {
   .datepicker {
     left: 7%;

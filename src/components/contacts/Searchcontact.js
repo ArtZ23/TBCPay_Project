@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Searchcontact extends Component {
   state = {
@@ -7,41 +8,28 @@ class Searchcontact extends Component {
     filteredData: []
   };
 
-  FindWithName = event => {
+  FindUser = async event => {
     //get value from input
     const queryname = event.target.value;
+    const res = await axios.get("http://localhost:3001/contacts");
+    const { data } = res;
+    const filteredData = data.filter(element => {
+      return (
+        element["name"].includes(queryname) ||
+        element["surname"].includes(queryname) ||
+        element["userid"].includes(queryname) ||
+        element["gender"].includes(queryname) ||
+        element["birthlocation"].includes(queryname) ||
+        element["city"].includes(queryname)
+      );
+    });
 
-    this.setState(prevState => {
-      const filteredData = prevState.data.filter(element => {
-        return element.surname.includes(queryname);
-      });
-
-      return {
-        queryname,
-        filteredData
-      };
+    this.setState({
+      queryname,
+      filteredData,
+      data
     });
   };
-
-  getName = () => {
-    fetch(`http://localhost:3001/contacts`)
-      .then(response => response.json())
-      .then(data => {
-        const { queryname } = this.state;
-        const filteredData = data.filter(element => {
-          return element.surname.includes(queryname);
-        });
-
-        this.setState({
-          data,
-          filteredData
-        });
-      });
-  };
-
-  componentWillMount() {
-    this.getName();
-  }
 
   render() {
     return (
@@ -50,12 +38,12 @@ class Searchcontact extends Component {
           type="text"
           className="form-control"
           placeholder="საძიებო ფორმა"
-          value={this.state.querynamename}
-          onChange={this.FindWithName}
+          value={this.state.queryname}
+          onChange={this.FindUser}
         />
         <br />
 
-        <table class="table table-striped table-dark">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
               <th>სახელი</th>
@@ -76,16 +64,7 @@ class Searchcontact extends Component {
                   <td>{l.surname}</td>
                   <td>{l.userid}</td>
                   <td>{l.gender}</td>
-                  <td
-                    style={{
-                      overflow: "hidden",
-                      width: "44%",
-                      whiteSpace: "nowrap",
-                      display: "-webkit-box"
-                    }}
-                  >
-                    {l.dob}
-                  </td>
+                  <td>{l.dob.substring(0, 10)}</td>
                   <td>{l.birthlocation}</td>
                   <td>{l.city}</td>
                   <td>{l.street}</td>

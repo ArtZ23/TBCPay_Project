@@ -5,19 +5,9 @@ import "./Addcontact.css";
 import uuid from "uuid";
 import "react-datepicker/dist/react-datepicker.css";
 import Axios from "axios";
+import Popup from "reactjs-popup";
 
 class Addcontact extends Component {
-  state = {
-    name: "",
-    surname: "",
-    userid: "",
-    gender: "",
-    dob: "",
-    birthlocation: "",
-    city: "",
-    street: ""
-  };
-
   onSubmit = (dispatch, e) => {
     e.preventDefault();
     const {
@@ -46,18 +36,6 @@ class Addcontact extends Component {
     Axios.post("http://localhost:3001/contacts", newContact).then(res =>
       dispatch({ type: "ADD_CONTACT", payload: newContact })
     );
-
-    // Clear state
-    this.setState({
-      name: "",
-      surname: "",
-      userid: "",
-      gender: "",
-      dob: "",
-      birthlocation: "",
-      city: "",
-      street: ""
-    });
 
     //redirectign to the Home page
     this.props.history.push("/");
@@ -94,10 +72,42 @@ class Addcontact extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
+          //checking if User Already Exist
+          const { dispatch, contacts } = value;
+          const ids = contacts.map(contact => contact.userid);
+          const isUser = ids.indexOf(userid);
+          //simple validation
+          let validate;
+          if (
+            name.length === 0 ||
+            surname.length === 0 ||
+            userid.length !== 11 ||
+            gender.length === 0 ||
+            birthlocation.length === 0 ||
+            city.length === 0 ||
+            street.length === 0 ||
+            isUser !== -1
+          ) {
+            validate = true;
+          } else {
+            validate = false;
+          }
+
           return (
             <div className="container mt-5 container mt-5 text-center d-flex justify-content-center">
               <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+                <div className="card  w-100 ">
+                  <div className="card-header">
+                    მომხმარებელის დამატების წესები
+                  </div>
+                  <p>ყველა ველი აუცილებელია</p>
+                  <p>არ გაამეოროთ პირადი ნომერი</p>
+                  <p>პირადი ნომერი არ აღემატება 11 სიმბოლოს</p>
+                  <p>თარიღი ვერ იქნება დღევანდელ თარიღზე მეტი</p>
+                </div>
+
+                <br />
+                <br />
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label htmlFor="name">სახელი</label>
@@ -181,12 +191,15 @@ class Addcontact extends Component {
                     onChange={this.onChange}
                   >
                     <option>დაბადების ადგილი...</option>
-                    <option>USA</option>
-                    <option>UK</option>
-                    <option>GEORGIA</option>
-                    <option>SPAIN</option>
-                    <option>ITALY</option>
-                    <option>CANADA</option>
+                    <option>საქართველო</option>
+                    <option>აშშ</option>
+                    <option>დიდი ბრიტანეთი</option>
+                    <option>ესპანეთი</option>
+                    <option>იტალია</option>
+                    <option>კანადა</option>
+                    <option>ჩინეთი</option>
+                    <option>იაპონია</option>
+                    <option>კორეა</option>
                   </select>
                 </div>
                 <div className="form-row">
@@ -218,17 +231,7 @@ class Addcontact extends Component {
                   </div>
                 </div>
                 <button
-                  disabled={
-                    name.length > 0 &&
-                    surname.length > 0 &&
-                    userid.length === 11 &&
-                    gender.length > 0 &&
-                    birthlocation.length > 0 &&
-                    city.length > 0 &&
-                    street.length > 0
-                      ? 0
-                      : 1
-                  }
+                  disabled={validate}
                   type="submit"
                   className="btn btn-primary"
                 >

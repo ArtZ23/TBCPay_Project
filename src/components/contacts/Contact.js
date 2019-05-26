@@ -25,7 +25,6 @@ class Contact extends Component {
           const { dispatch } = value;
           return (
             <div className="card card-body mb-3">
-           
               <h4>
                 <b>
                   {" "}
@@ -67,17 +66,7 @@ class Contact extends Component {
                     სქესი: <b> {contact.gender}</b>
                   </li>
                   <li className="list-group-item">
-                    დაბადების თარიღი :{" "}
-                    <b
-                      style={{
-                        whiteSpace: "nowrap",
-                        maxWidth: "8.4%",
-                        overflow: "hidden",
-                        display: "-webkit-box"
-                      }}
-                    >
-                      {contact.dob}
-                    </b>
+                    დაბადების თარიღი : <b>{contact.dob.substring(0, 10)}</b>
                   </li>
                   <li className="list-group-item">
                     დაბადების ადგილი : <b> {contact.birthlocation}</b>
@@ -99,7 +88,6 @@ class Contact extends Component {
   }
 }
 Contact.propTypes = {
-  contact: PropTypes.object.isRequired,
-  error: PropTypes.string
+  contact: PropTypes.object.isRequired
 };
 export default Contact;
